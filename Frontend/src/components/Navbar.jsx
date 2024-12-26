@@ -31,12 +31,7 @@ const Navbar = () => {
           <span>Home</span>
         </li>
       </Link>
-      <Link to="/profile" onClick={closeMenu}>
-        <li className="flex items-center gap-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-4 py-2 rounded">
-          <UserIcon className="h-5 w-5" />
-          <span>Profile</span>
-        </li>
-      </Link>
+    
       <Link to="/transaction" onClick={closeMenu}>
         <li className="flex items-center gap-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 px-4 py-2 rounded">
           <CreditCardIcon className="h-5 w-5" />
@@ -59,9 +54,6 @@ const Navbar = () => {
       <div className="hidden md:flex gap-9">
         <Link to="/">
           <li className="list-none hover:underline">Home</li>
-        </Link>
-        <Link to="/profile">
-          <li className="list-none hover:underline">Profile</li>
         </Link>
         <Link to="/transaction">
           <li className="list-none hover:underline">Transaction</li>

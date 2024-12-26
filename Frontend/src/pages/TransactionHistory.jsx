@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect,} from 'react';
 import axios from 'axios';
-import { AuthContext } from '../Context/Context';
 import { useNavigate } from 'react-router-dom';
 
 const TransactionHistory = ({ user }) => {
@@ -11,12 +10,7 @@ const TransactionHistory = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
-      alert("Please login first");
-      navigate('/login');
-      return;
-    }
-    
+  
     const fetchTransactions = async () => {
       try {
         setLoading(true);
@@ -52,6 +46,8 @@ const TransactionHistory = ({ user }) => {
   );
 
   if (!user) {
+    
+    navigate("/login")
     return null; // Avoid rendering the component if user is not logged in
   }
 
