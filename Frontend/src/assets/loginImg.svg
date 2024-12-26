@@ -1,0 +1,29 @@
+  <svg
+          width="34"
+          height="34"
+          viewBox="0 0 34 34"
+          xmlns="http://www.w3.org/2000/svg"
+          className="transition-all duration-300"
+        >
+          <circle
+            cx="17"
+            cy="17"
+            r="17"
+            fill="#002970"
+            className="group-hover:fill-[#0056b3]"
+          />
+          <circle
+            cx="17"
+            cy="14.7331"
+            r="7.93333"
+            fill="white"
+            className="group-hover:fill-[#d1d1d1]"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M4.07898 28.048C6.58399 23.4894 11.4312 20.3999 16.9999 20.3999C22.5687 20.3999 27.4159 23.4894 29.9209 28.048C26.8029 31.691 22.1711 33.9999 16.9999 33.9999C11.8288 33.9999 7.19693 31.691 4.07898 28.048Z"
+            fill="white"
+            className="group-hover:fill-[#cccccc]"
+          />
+        </svg>

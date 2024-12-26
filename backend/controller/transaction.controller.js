@@ -5,7 +5,7 @@ module.exports.makeTransaction = async (req, res) => {
   try {
     const { sender_upi_id, receiver_upi_id, amount } = req.body;
 
-    // Validate input
+
     if (!sender_upi_id || !receiver_upi_id || !amount) {
       return res.status(400).json({ message: 'All fields are required' });
     }
@@ -18,27 +18,28 @@ module.exports.makeTransaction = async (req, res) => {
       return res.status(400).json({ message: 'Amount must be greater than zero' });
     }
 
-    // Fetch sender and receiver
     const sender = await userModel.findOne({ upi_id: sender_upi_id });
     const receiver = await userModel.findOne({ upi_id: receiver_upi_id });
 
     if (!sender) return res.status(404).json({ message: 'Sender not found' });
     if (!receiver) return res.status(404).json({ message: 'Receiver not found' });
 
-    // Check sender's balance
+  
     if (sender.balance < amount) {
       return res.status(400).json({ message: 'Insufficient balance' });
     }
 
-    // Perform the transaction
-    sender.balance -= amount;
-    receiver.balance += amount;
+    const senderBalance = Number(sender.balance);
+    const receiverBalance = Number(receiver.balance);
+    const transactionAmount = Number(amount);
 
-    // Save updated balances
+    sender.balance = senderBalance - transactionAmount;
+    receiver.balance = receiverBalance + transactionAmount;
+    
     await sender.save();
     await receiver.save();
 
-    // Create a transaction record
+   
     const transaction = await transactionModel.create({
       sender_upi_id,
       receiver_upi_id,
@@ -46,7 +47,7 @@ module.exports.makeTransaction = async (req, res) => {
       timestamp: new Date(),    
     });
 
-    // Return success response
+
     res.status(200).json({
       message: 'Transaction successful',
       transaction,
@@ -61,16 +62,16 @@ module.exports.makeTransaction = async (req, res) => {
 
 module.exports.getTransactionsByUpi = async (req, res) => {
   try {
-    const { upi_id } = req.params; // Extract UPI ID from route parameters
+    const { upi_id } = req.params; 
 
     if (!upi_id) {
       return res.status(400).json({ message: 'UPI ID is required' });
     }
 
-    // Find all transactions where the user is either the sender or the receiver
+  
     const transactions = await transactionModel.find({
       $or: [{ sender_upi_id: upi_id }, { receiver_upi_id: upi_id }],
-    }).sort({ timestamp: -1 }); // Sort transactions by timestamp (most recent first)
+    }).sort({ timestamp: -1 });
 
     if (transactions.length === 0) {
       return res.status(404).json({ message: 'No transactions found for this UPI ID' });

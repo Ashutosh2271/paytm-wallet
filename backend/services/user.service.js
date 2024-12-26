@@ -7,7 +7,7 @@ module.exports.createUser = async ({
   upi_id,
   balance,
 }) => {
-  // Validate required fields
+
   if (!name || !email || !password || !upi_id || balance === undefined) {
     throw new Error("All fields are required");
   }

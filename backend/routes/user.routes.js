@@ -23,7 +23,7 @@ router.post('/login',[
 )
 
 
-router.get('/user/:upi_id', controller.fetchUserDetailsByUpi);
+router.get('/:upi_id', controller.fetchUserDetailsByUpi);
 
 
 
