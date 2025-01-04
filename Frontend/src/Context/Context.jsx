@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
      const userData = localStorage.getItem("user")
      setUser(JSON.parse(storedUser))
      setUsers(JSON.parse(userData))
-  },[])
+    },[])
   const logout = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('user');

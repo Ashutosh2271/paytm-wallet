@@ -19,7 +19,7 @@ app.get('/', (req, res)=>{
 })
 
 app.use('/user',userRoutes)
-app.use('/',TransactionRoutes)
+app.use('/',TransactionRoutes )
 
 
 module.exports = app 

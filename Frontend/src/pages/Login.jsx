@@ -15,7 +15,7 @@ const Login = () => {
     reset,
   } = useForm();
   const navigate = useNavigate();
-
+  localStorage.getItem('user')
   const onSubmit = async (data) => {
     try {
       const response = await axios.post('http://localhost:3000/user/login', data);
