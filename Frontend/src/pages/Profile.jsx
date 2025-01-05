@@ -3,11 +3,13 @@ import { AuthContext } from "../Context/Context";
 import axios from "axios";
 
 const Profile = () => {
-  const [profile, setProfile] = useState(null); // Profile data
-  const [amount, setAmount] = useState(""); // Amount to add
-  const { users } = useContext(AuthContext); // Auth context
+  const [profile, setProfile] = useState(null); 
+  const [amount, setAmount] = useState("");
+  const { users } = useContext(AuthContext); 
 
-  // Fetch user profile
+  console.log("profile",users)
+
+
   useEffect(() => {
     const fetchProfile = async () => {
       if (!users?.upi_id) return;
@@ -25,7 +27,7 @@ const Profile = () => {
     };
 
     fetchProfile();
-  }, []);
+  }, [users]);
 
   
   const handleAddMoney = async () => {

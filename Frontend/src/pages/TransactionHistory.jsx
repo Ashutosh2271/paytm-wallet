@@ -34,7 +34,7 @@ const TransactionHistory = ({ user }) => {
 
 
     fetchTransactions();
-  },[]);
+  },[user]);
 
 
   

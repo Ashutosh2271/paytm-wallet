@@ -65,7 +65,7 @@ const Transaction = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <Profile />
+      <Profile/>
       <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Send Money</h1>
 
